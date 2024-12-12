@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponBehaviour : MonoBehaviour
 {
-
+    [SerializeField] private int _damage;
     public void FireWeapon(RaycastHit hit)
     {
         //GetComponent<AudioSource>().Play();
@@ -12,7 +12,7 @@ public class WeaponBehaviour : MonoBehaviour
         if (hit.transform.tag == "Enemy" || hit.transform.tag == "Player")
         {
             CharacterBehaviour character = hit.transform.GetComponent<CharacterBehaviour>();
-            character.Hit();
+            character.Hit(_damage);
         }
     }
 }

@@ -4,20 +4,15 @@ using UnityEngine;
 
 public class CharacterBehaviour : MonoBehaviour
 {
-    [SerializeField, Range(0, 10)] protected int _maxHealth;
+    [SerializeField, Range(0, 100)] protected int _maxHealth;
     protected int _currentHealth;
+    [SerializeField, Range(0, 100)] protected int _maxArmour;
+    protected int _currentArmour;
     void Start()
     {
         _currentHealth = _maxHealth;
     }
-    public void Hit()
-    {
-        _currentHealth -= 1;
-        if (_currentHealth <= 0) Die();
-    }
+    public virtual void Hit(int dmg) {}
 
-    public virtual void Die()
-    {
-        
-    }
+    public virtual void Die() {}
 }

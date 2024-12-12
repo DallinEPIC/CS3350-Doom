@@ -16,8 +16,6 @@ public class EnemyWeaponBehaviour : WeaponBehaviour
 
         _timer += Time.deltaTime;
 
-        transform.LookAt(PlayerBehaviour.instance.transform);
-
         if (_timer >= _cooldownTimer)
         {
             _timer %= _cooldownTimer;
