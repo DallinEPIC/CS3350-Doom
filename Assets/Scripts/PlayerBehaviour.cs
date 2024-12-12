@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlayerBehaviour : CharacterBehaviour
 {
     [HideInInspector] public static PlayerBehaviour instance;
-    
+    public AudioSource audioSource;
+
     void Awake()
     {
         instance = this;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -17,12 +19,7 @@ public class PlayerBehaviour : CharacterBehaviour
     }
     public override void Die()
     {
-        
-    }
-    public override void Hit(int dmg)
-    {
-        _currentHealth -= dmg;
-        if (_currentHealth <= 0) Die();
+        base.Die();
     }
     public void pickupHealth(int hp, bool overHealth) 
     {

@@ -5,9 +5,10 @@ using UnityEngine;
 public class WeaponBehaviour : MonoBehaviour
 {
     [SerializeField] private int _damage;
+    [SerializeField] private AudioClip shootSound;
     public void FireWeapon(RaycastHit hit)
     {
-        //GetComponent<AudioSource>().Play();
+        GetComponent<AudioSource>().PlayOneShot(shootSound);
 
         if (hit.transform.tag == "Enemy" || hit.transform.tag == "Player")
         {

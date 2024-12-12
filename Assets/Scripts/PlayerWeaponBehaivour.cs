@@ -8,6 +8,10 @@ public class PlayerWeaponBehaivour : WeaponBehaviour
     [HideInInspector] public static PlayerWeaponBehaivour instance;
     private int _ammo, _shotgunShells, _rockets;
     [SerializeField] private int _maxAmmo, _maxShotgunShells, _maxRockets;
+    void Awake()
+    {
+        instance = this;
+    }
     void Update()
     {
         if (Input.GetMouseButtonDown(0))

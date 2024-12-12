@@ -9,10 +9,9 @@ public class EnemyWeaponBehaviour : WeaponBehaviour
 
     void Update()
     {
-
         RaycastHit hit;
         Physics.Raycast(transform.position, PlayerBehaviour.instance.transform.position - transform.position, out hit);
-        if (hit.transform.tag != "Player") return;
+        if (hit.transform.tag != "Player") { _timer = 0; return; }
 
         _timer += Time.deltaTime;
 

@@ -10,6 +10,7 @@ public class DoorBehaviour : MonoBehaviour
     [SerializeField] private float _timeToOpen, _timeToStayOpen, _openHeight;
     private bool _doorMoving;
     private float _timeElapsed;
+    public AudioClip openSound, closeSound;
     private readonly float FPS = 30; //Num of jumps door makes in a second
     public void Open()
     {
@@ -19,7 +20,8 @@ public class DoorBehaviour : MonoBehaviour
     }
     private IEnumerator OpenDoor()
     {
-        while(_timeElapsed < _timeToOpen)
+        GetComponent<AudioSource>().PlayOneShot(openSound);
+        while (_timeElapsed < _timeToOpen)
         {
             yield return new WaitForSeconds(1/FPS);
             _timeElapsed += 1/FPS;
@@ -32,6 +34,7 @@ public class DoorBehaviour : MonoBehaviour
 
     private IEnumerator CloseDoor()
     {
+        GetComponent<AudioSource>().PlayOneShot(closeSound);
         while (_timeElapsed < _timeToOpen)
         {
             yield return new WaitForSeconds(1/FPS);

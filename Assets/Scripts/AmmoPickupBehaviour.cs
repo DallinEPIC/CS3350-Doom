@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AmmoPickupBehaviour : QuadBehaviour
+public class AmmoPickupBehaviour : ItemPickupBehaviour
 {
     [SerializeField] private int _ammo, _shotgunShells, _rockets;
-    private void OnTriggerEnter(Collider other)
+    public override void Pickup()
     {
-        if (other.gameObject.tag != "Player") return;
         PlayerWeaponBehaivour.instance.pickupAmmo(_ammo, _shotgunShells, _rockets);
-        gameObject.SetActive(false);
     }
 }
